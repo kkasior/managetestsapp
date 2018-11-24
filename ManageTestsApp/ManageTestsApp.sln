@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageTestsApp", "ManageTestsApp\ManageTestsApp.csproj", "{91EF26A4-DCC7-4B33-9339-9059AD6627C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITests", "UITests\UITests.csproj", "{09B2D026-ECED-47EB-BBEF-061FA102DADA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91EF26A4-DCC7-4B33-9339-9059AD6627C0} = {91EF26A4-DCC7-4B33-9339-9059AD6627C0}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{91EF26A4-DCC7-4B33-9339-9059AD6627C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91EF26A4-DCC7-4B33-9339-9059AD6627C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91EF26A4-DCC7-4B33-9339-9059AD6627C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B2D026-ECED-47EB-BBEF-061FA102DADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B2D026-ECED-47EB-BBEF-061FA102DADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B2D026-ECED-47EB-BBEF-061FA102DADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B2D026-ECED-47EB-BBEF-061FA102DADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
