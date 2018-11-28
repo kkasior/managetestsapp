@@ -4,15 +4,21 @@ using ManageTestsApp;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Reflection;
-using System.Linq;
+using OpenQA.Selenium.Remote;
 
 namespace UITests
 {
     [TestClass]
     public class UnitTest1
     {
+        private IWebDriver driver;
         public TestContext TestContext { get; set; }
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            driver = new RemoteWebDriver(DesiredCapabilities.Chrome());
+        }
 
         [TestCleanup]
         public void TestClenup()
@@ -24,9 +30,8 @@ namespace UITests
         [TestMethodId(1)]
         public void TestMethod1()
         {
-            IWebDriver driver = new ChromeDriver();
             driver.Url = "http://localhost/blog";
-
+           
             IWebElement helloWorld = driver.FindElement(By.LinkText("Hello world!"));
             //helloWorld.Click();
             //IWebElement image = driver.FindElement(By.ClassName("overlay"));
