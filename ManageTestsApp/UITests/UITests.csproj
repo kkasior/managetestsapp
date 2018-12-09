@@ -56,6 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjects\BaseBlogPage.cs" />
+    <Compile Include="PageObjects\PostList.cs" />
+    <Compile Include="PageObjects\SinglePostPage.cs" />
     <Compile Include="TestMethodId.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

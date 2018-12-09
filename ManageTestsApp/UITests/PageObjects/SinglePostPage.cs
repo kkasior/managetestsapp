@@ -5,23 +5,31 @@ namespace UITests.PageObjects
 {
     public class SinglePostPage : BaseBlogPage
     {
-        [FindsBy(How = How.LinkText, Using = "")]
-        IWebElement PostTitle;
+        IWebDriver driver;
+
+        public SinglePostPage(IWebDriver _driver)
+        {
+            this.driver = _driver;
+            PageFactory.InitElements(driver, this);
+        }
+
+        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h1")]
+        public IWebElement PostTitle;
 
         [FindsBy(How = How.Id, Using = "reply-title")]
-        IWebElement LeaveAReplyTitle;
+        public IWebElement LeaveAReplyTitle;
 
         [FindsBy(How = How.Id, Using = "comment")]
-        IWebElement CommentTextInput;
+        public IWebElement CommentTextInput;
 
         [FindsBy(How = How.Id, Using = "author")]
-        IWebElement NameTextInput;
+        public IWebElement NameTextInput;
 
         [FindsBy(How = How.Id, Using = "email")]
-        IWebElement EmailTextInput;
+        public IWebElement EmailTextInput;
 
         [FindsBy(How = How.Id, Using = "submit")]
-        IWebElement PostCommentButton;
+        public IWebElement PostCommentButton;
 
         public void GoToLeaveAReplySection()
         {

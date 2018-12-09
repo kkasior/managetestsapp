@@ -10,24 +10,30 @@ namespace UITests.PageObjects
 {
     class PostList : BaseBlogPage
     {
+        IWebDriver driver;
+
+        public PostList(IWebDriver _driver)
+        {
+            this.driver = _driver;
+            PageFactory.InitElements(driver, this);
+            driver.Url = postListPageUrl;
+        }
+
         string postListPageUrl = "http://localhost/blog/";
 
         [FindsBy(How = How.ClassName, Using = "site-title")]
-        private IWebElement PageTitle;
+        public IWebElement PageTitle;
 
         [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2")]
-        private IWebElement FirstPostTitle;
-
-        public PostList(IWebDriver driver)
-        {
-            driver.Url = postListPageUrl;
-        }
+        public IWebElement FirstPostTitle;
 
         public SinglePostPage OpenFirstPostPage()
         {
             FirstPostTitle.Click();
-            return 0;
 
+            SinglePostPage spp = new SinglePostPage(driver);
+
+            return spp;
         }
 
 
