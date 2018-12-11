@@ -24,7 +24,7 @@ namespace UITests.PageObjects
         [FindsBy(How = How.ClassName, Using = "site-title")]
         public IWebElement PageTitle;
 
-        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2")]
+        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2 > a")]
         public IWebElement FirstPostTitle;
 
         public SinglePostPage OpenFirstPostPage()

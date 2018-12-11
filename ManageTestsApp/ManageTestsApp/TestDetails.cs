@@ -31,12 +31,12 @@ namespace ManageTestsApp
             return testDetailsFromFile;
         }
 
-        public void ChangeTestStatus(string testname, string testStatusArg)
+        public void ChangeTestStatus()
         {
             List<TestDetails> testDetails = LoadTestDetails();
-            TestDetails testToChange = testDetails.Where(t => t.testName == testname).First();
-            testToChange.testStatus = testStatusArg;
-
+            TestDetails testToChange = testDetails.Where(t => t.testId == TestResult.TestID).First();
+            testToChange.testStatus = TestResult.TestOutcome;
+            
             string json = JsonConvert.SerializeObject(testDetails);
             System.IO.File.WriteAllText(path, json);
         }
