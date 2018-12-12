@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,13 @@ namespace UITests.PageObjects
         [FindsBy(How = How.ClassName, Using = "site-title")]
         public IWebElement PageTitle;
 
-        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2 > a")]
+        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2")]
         public IWebElement FirstPostTitle;
 
         public SinglePostPage OpenFirstPostPage()
         {
+            HighlightElement(FirstPostTitle, driver);
+            WaitUntilIsClickable(driver,5,FirstPostTitle);
             FirstPostTitle.Click();
 
             SinglePostPage spp = new SinglePostPage(driver);

@@ -15,18 +15,17 @@ namespace UITests
     public class SinglePostPageUITest: BaseUITest
     {
         private IWebDriver driver;
-        BaseBlogPage bbp = new BaseBlogPage();
-        //public TestContext TestContext { get; set; }
 
         [SetUp]
         public void TestInitialize()
         {
-            //driver = new RemoteWebDriver(DesiredCapabilities.Chrome());
+            driver = InitializeRemoteChromeWebDriver();
         }
 
         [TearDown]
         public void TestClenup()
         {
+            driver.Quit();
             TestResult.TestOutcome = TestContext.CurrentContext.Result.Outcome.ToString();
             UpdateTestResults();
         }
@@ -35,25 +34,22 @@ namespace UITests
         [TestCaseID(1)]
         public void GIVENCreatedPostWHENCommentIsAddedBelowTHENCommentIsVisibleBelowPost()
         {
+            PostList postList = new PostList(driver);
 
-            Assert.AreEqual(1, 2);
-            //PostList postList = new PostList(driver);
+            Assert.IsTrue(postList.PageTitle.Displayed);
 
-            ////Assert.IsTrue(postList.PageTitle.Displayed);
+            string firstPostTitle = postList.FirstPostTitle.Text;
 
-            //string firstPostTitle = postList.FirstPostTitle.Text;
+            SinglePostPage firstPostPage = postList.OpenFirstPostPage();
 
-            //SinglePostPage firstPostPage = postList.OpenFirstPostPage();
-
-            ////Assert.AreEqual(firstPostTitle.ToString(), firstPostPage.PostTitle.Text);
-            
+            Assert.AreEqual(firstPostTitle.ToString(), firstPostPage.PostTitle.Text); 
         }
         [Test]
         [TestCaseID(2)]
         public void GaIVENCreatedPostWHENCommentIsAddedBelowTHENCommentIsVisibleBelowPost()
         {
 
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual(1, 2);
             //PostList postList = new PostList(driver);
 
             ////Assert.IsTrue(postList.PageTitle.Displayed);
