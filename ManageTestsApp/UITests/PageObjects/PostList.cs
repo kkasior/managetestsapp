@@ -31,12 +31,12 @@ namespace UITests.PageObjects
         public SinglePostPage OpenFirstPostPage()
         {
             HighlightElement(FirstPostTitle, driver);
-            WaitUntilIsClickable(driver,5,FirstPostTitle);
+            WaitUntilIsClickable(driver, FirstPostTitle);
             FirstPostTitle.Click();
 
-            SinglePostPage spp = new SinglePostPage(driver);
+            SinglePostPage singlePostPage = new SinglePostPage(driver);
 
-            return spp;
+            return singlePostPage;
         }
 
 

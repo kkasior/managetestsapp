@@ -7,7 +7,6 @@ namespace UITests.PageObjects
 {
     public class BaseBlogPage
     {
-        IWebDriver driver;
         public void HighlightElement(IWebElement elementFromPage, IWebDriver driver)
         {
             var js = (IJavaScriptExecutor)driver;
@@ -15,11 +14,10 @@ namespace UITests.PageObjects
             js.ExecuteScript(script, elementFromPage);
         }
 
-        public void WaitUntilIsClickable(IWebDriver driver ,int maxSeconds, IWebElement element)
+        public void WaitUntilIsClickable(IWebDriver driver, IWebElement element)
         {
-            new WebDriverWait(driver, TimeSpan.FromSeconds(maxSeconds))
-                .Until(ExpectedConditions.ElementToBeClickable(element));
-                
+            new WebDriverWait(driver, TimeSpan.FromSeconds(5))
+                .Until(ExpectedConditions.ElementToBeClickable(element));        
         }
     }
 }
