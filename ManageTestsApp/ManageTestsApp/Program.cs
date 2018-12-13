@@ -9,7 +9,8 @@ namespace ManageTestsApp
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
+            Console.WriteLine("this is only test management application!");
         }
     }
 }

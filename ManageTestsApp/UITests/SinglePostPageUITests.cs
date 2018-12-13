@@ -35,30 +35,25 @@ namespace UITests
         public void GIVENCreatedPostWHENCommentIsAddedBelowTHENCommentIsVisibleBelowPost()
         {
             PostList postList = new PostList(driver);
-
             Assert.IsTrue(postList.PageTitle.Displayed);
-
             string firstPostTitle = postList.FirstPostTitle.Text;
 
             SinglePostPage firstPostPage = postList.OpenFirstPostPage();
+            Assert.AreEqual(firstPostTitle.ToString(), firstPostPage.PostTitle.Text);
 
-            Assert.AreEqual(firstPostTitle.ToString(), firstPostPage.PostTitle.Text); 
+            string comment = "this is very good comment9";
+            string username = "superuser";
+            string email = "super@user.com";
+
+            firstPostPage.AddAComment(comment, username, email);
+            firstPostPage.PostCommentButton.Click();
+
+            firstPostPage.CompareLastCommentWithGivenData(username, comment);
         }
         [Test]
         [TestCaseID(2)]
         public void GaIVENCreatedPostWHENCommentIsAddedBelowTHENCommentIsVisibleBelowPost()
         {
-
-            Assert.AreEqual(1, 2);
-            //PostList postList = new PostList(driver);
-
-            ////Assert.IsTrue(postList.PageTitle.Displayed);
-
-            //string firstPostTitle = postList.FirstPostTitle.Text;
-
-            //SinglePostPage firstPostPage = postList.OpenFirstPostPage();
-
-            ////Assert.AreEqual(firstPostTitle.ToString(), firstPostPage.PostTitle.Text);
 
         }
     }

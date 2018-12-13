@@ -23,16 +23,23 @@ namespace UITests.PageObjects
         string postListPageUrl = "http://localhost/blog/";
 
         [FindsBy(How = How.ClassName, Using = "site-title")]
-        public IWebElement PageTitle;
+        public IWebElement PageTitle { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2")]
-        public IWebElement FirstPostTitle;
+        [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h2 > a")]
+        public IWebElement FirstPostTitle { get; set; }
 
         public SinglePostPage OpenFirstPostPage()
         {
-            HighlightElement(FirstPostTitle, driver);
-            WaitUntilIsClickable(driver, FirstPostTitle);
-            FirstPostTitle.Click();
+            try
+            {
+                FirstPostTitle.Click();
+            }
+            catch
+            {
+                if(FirstPostTitle.Displayed && FirstPostTitle.Enabled)
+                    FirstPostTitle.Click();
+            }
+
 
             SinglePostPage singlePostPage = new SinglePostPage(driver);
 
