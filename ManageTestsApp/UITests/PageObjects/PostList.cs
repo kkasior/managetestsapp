@@ -34,7 +34,7 @@ namespace UITests.PageObjects
             {
                 FirstPostTitle.Click();
             }
-            catch
+            catch(Exception e)
             {
                 if(FirstPostTitle.Displayed && FirstPostTitle.Enabled)
                     FirstPostTitle.Click();

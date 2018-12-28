@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using ManageTestsApp;
+﻿using ManageTestsApp;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.PageObjects;
 using UITests.PageObjects;
 
 
@@ -26,7 +21,7 @@ namespace UITests
         public void TestClenup()
         {
             driver.Quit();
-            TestResult.TestOutcome = TestContext.CurrentContext.Result.Outcome.ToString();
+            GetTestResult();
             UpdateTestResults();
         }
 
@@ -34,18 +29,19 @@ namespace UITests
         [TestCaseID(1)]
         public void GIVENCreatedPostWHENCommentIsAddedBelowTHENCommentIsVisibleBelowPost()
         {
-            PostList postList = new PostList(driver);
-            Assert.IsTrue(postList.PageTitle.Displayed);
-            string firstPostTitle = postList.FirstPostTitle.Text;
+            PostList postListPage = new PostList(driver);
+            Assert.IsTrue(postListPage.PageTitle.Displayed);
+            string firstPostTitle = postListPage.FirstPostTitle.Text;
 
-            SinglePostPage firstPostPage = postList.OpenFirstPostPage();
+            SinglePostPage firstPostPage = postListPage.OpenFirstPostPage();
             Assert.AreEqual(firstPostTitle.ToString(), firstPostPage.PostTitle.Text);
 
-            string comment = "this is very good comment9";
+            Assert.IsTrue(firstPostPage.LeaveAReplySection.Displayed && firstPostPage.LeaveAReplySection.Enabled);
+            string comment = "this is very good comment20000";
             string username = "superuser";
             string email = "super@user.com";
 
-            firstPostPage.AddAComment(comment, username, email);
+            firstPostPage.AddTextToComment(comment, username, email);
             firstPostPage.PostCommentButton.Click();
 
             firstPostPage.CompareLastCommentWithGivenData(username, comment);

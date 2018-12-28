@@ -17,6 +17,9 @@ namespace UITests.PageObjects
         [FindsBy(How = How.CssSelector, Using = "#post-48 > header > h1")]
         public IWebElement PostTitle { get; set; }
 
+        [FindsBy(How = How.Id, Using = "respond")]
+        public IWebElement LeaveAReplySection { get; set; }
+
         [FindsBy(How = How.Id, Using = "reply-title")]
         public IWebElement LeaveAReplyTitle { get; set; }
 
@@ -53,7 +56,7 @@ namespace UITests.PageObjects
             }
         }
 
-        public void AddAComment(string commentContent, string username, string email)
+        public void AddTextToComment(string commentContent, string username, string email)
         {
             CommentTextInput.SendKeys(commentContent);
             NameTextInput.SendKeys(username);

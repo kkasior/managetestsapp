@@ -22,10 +22,23 @@ namespace UITests
             return this.driver;
         }
 
+        public void GetTestResult()
+        {
+            string testResultWithDescription = TestContext.CurrentContext.Result.Outcome.ToString();
+            if (testResultWithDescription.StartsWith("Failed"))
+            {
+                TestResult.TestOutcome = "Failed";
+            }
+            else if (testResultWithDescription.StartsWith("Passed"))
+            {
+                TestResult.TestOutcome = "Passed";
+            }
+        }
+
         public void UpdateTestResults()
         {
-            TestDetails td = new TestDetails();
-            td.ChangeTestStatus();
+            TestDetails testDetails = new TestDetails();
+            testDetails.ChangeTestStatus();
         }
 
         public void ScrollToSelectedElement(IWebElement element)
